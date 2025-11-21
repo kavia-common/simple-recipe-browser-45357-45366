@@ -12,12 +12,14 @@ function filterRecipes(q: string | null) {
 }
 
 type HomeProps = {
+  // Match project PageProps constraint: searchParams is provided as a Promise.
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export default async function Home(props: HomeProps) {
-  const sp = props.searchParams ? await props.searchParams : undefined;
-
+// PUBLIC_INTERFACE
+export default async function Home({ searchParams }: HomeProps) {
+  /** Home page listing recipes with client-side filter via URL query (?q=). */
+  const sp = searchParams ? await searchParams : undefined;
   const qParam = sp?.q;
   const q = Array.isArray(qParam) ? qParam[0] : qParam;
 

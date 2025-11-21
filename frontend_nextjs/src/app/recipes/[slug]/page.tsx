@@ -15,23 +15,23 @@ export async function generateMetadata({
 }: {
   params: Promise<RouteParams>;
 }): Promise<Metadata> {
-  const resolvedParams = await params;
-  const recipe = getRecipeBySlug(resolvedParams.slug);
+  const { slug } = await params;
+  const recipe = getRecipeBySlug(slug);
   return {
     title: recipe ? `${recipe.title} • Ocean Recipes` : "Recipe • Ocean Recipes",
     description: recipe?.description ?? "Recipe details and instructions.",
   };
 }
 
-export default async function RecipeDetail({
-  params,
-}: {
+type RecipeDetailProps = {
   params: Promise<RouteParams>;
-}) {
-  /** Recipe detail page with hero image, meta info, ingredients, and steps. */
-  const resolvedParams = await params;
+};
 
-  const recipe = getRecipeBySlug(resolvedParams.slug);
+// PUBLIC_INTERFACE
+export default async function RecipeDetail({ params }: RecipeDetailProps) {
+  /** Recipe detail page with hero image, meta info, ingredients, and steps. */
+  const { slug } = await params;
+  const recipe = getRecipeBySlug(slug);
 
   if (!recipe) {
     // Allow Next.js to serve not-found.tsx
