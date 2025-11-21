@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ocean Recipes – Next.js Frontend
+
+A simple recipe browser built with Next.js App Router and Tailwind CSS. It follows the Ocean Professional theme:
+- Primary: #2563EB
+- Secondary/Success: #F59E0B
+- Error: #EF4444
+- Background: #f9fafb
+- Surface: #ffffff
+- Text: #111827
+- Gradient: from-blue-500/10 to-gray-50 accents in headers
+
+Features:
+- Home page: responsive grid of recipe cards with images, title, description, tags, and meta (prep/cook/servings).
+- Detail page: hero image, tags, times, servings, ingredients, and step-by-step instructions.
+- Navbar with search filtering (client-side), and a minimal Footer.
+- Local mock data (no external APIs or services).
 
 ## Getting Started
 
-First, run the development server:
-
+1) Install dependencies and run dev:
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2) Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+No additional environment variables are required. If available, NEXT_PUBLIC_* env vars will be respected but are not necessary.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+- src/app/page.tsx – Home grid
+- src/app/recipes/[slug]/page.tsx – Recipe detail route (statically generated)
+- src/components/ – Navbar, RecipeCard, Tag, Footer
+- src/data/recipes.ts – Mock recipe data source
+- public/images/ – Placeholder images (SVG)
 
-To learn more about Next.js, take a look at the following resources:
+## Theming
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Theme variables are defined in src/app/globals.css under the :root selector. Adjust these values to tweak the Ocean Professional palette, corner radii, and shadows.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Accessibility
 
-## Deploy on Vercel
+- Semantic HTML structure with landmarks
+- Alt text for images
+- Focus styles via focus-ring utilities
+- Sufficient contrast within theme colors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No external services are required.
+- Images are simple SVG placeholders to keep the app self-contained.

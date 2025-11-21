@@ -1,10 +1,22 @@
 @import "tailwindcss";
 
+/* Ocean Professional Theme CSS variables */
 :root {
-  --color-primary: #000000;
-  --color-secondary: #FFFFFF;
-  --color-accent: #3B82F6;
-  --color-background: #FFFFFF;
+  --color-primary: #2563EB;   /* Blue */
+  --color-secondary: #F59E0B; /* Amber */
+  --color-success: #F59E0B;   /* Same as secondary */
+  --color-error: #EF4444;
+  --color-background: #f9fafb; /* Gray-50 */
+  --color-surface: #ffffff;
+  --color-text: #111827; /* Gray-900 */
+
+  --radius-sm: 0.375rem; /* rounded-md */
+  --radius-md: 0.5rem;   /* rounded-lg */
+  --radius-lg: 0.75rem;  /* rounded-xl */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
 }
 
 * {
@@ -18,9 +30,61 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--color-background);
-  color: var(--color-primary);
+  color: var(--color-text);
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+}
+
+/* App containers */
+.app-shell {
+  min-height: 100dvh;
+  background: linear-gradient(to bottom right, rgb(59 130 246 / 0.08), #f9fafb 35%);
+}
+
+/* Surface card */
+.surface {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.surface:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Focus ring utility */
+.focus-ring:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--color-primary) 70%, white);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* Tag styles */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  background: rgb(37 99 235 / 0.08);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Navbar gradient header helper */
+.header-gradient {
+  background-image: linear-gradient(to right, rgb(59 130 246 / 0.10), rgb(249 250 251 / 1));
+}
+
+/* Utility text colors for semantic marks */
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-error {
+  color: var(--color-error);
 }
